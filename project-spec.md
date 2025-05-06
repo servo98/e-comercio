@@ -37,8 +37,8 @@ Rutas del front
 
 Rutas del back
 
-/auth/register POST registrar usuario
-/auth/login POST Iniciar sesión
+/auth/register POST registrar usuario ✅
+/auth/login POST Iniciar sesión ✅
 
 /profile GET Detalle de usuario
 /profile PUT Editar usuario
