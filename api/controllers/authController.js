@@ -45,7 +45,9 @@ const login = async (req, res) => {
 
     // Crear un token y se lo mandamos al cliente
 
-    const payload = {};
+    const payload = {
+      userId: user.id,
+    };
 
     const token = jwt.sign(payload, process.env.JWT_SECRET, {
       expiresIn: "2h",

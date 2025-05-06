@@ -40,7 +40,7 @@ Rutas del back
 /auth/register POST registrar usuario ✅
 /auth/login POST Iniciar sesión ✅
 
-/profile GET Detalle de usuario
+/profile GET Detalle de mi usuario
 /profile PUT Editar usuario
 /profile/{id}/products Productos de una persona
 
