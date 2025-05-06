@@ -58,3 +58,46 @@ Rutas del back
 /payments GET Historial de pagos
 
 /sales Historial de ventas
+
+Modelos de base de datos
+
+- User
+  firstName
+  lastName
+  birthday
+  address
+  phone
+  username
+  email
+  password
+
+- Product
+  price
+  name
+  description
+  photos
+  user -> User
+  stock
+
+- Cart
+  user -> Users
+  items [{
+  product -> Producto
+  quantity
+  price
+  }]
+
+- Sale
+  user -> User
+  total
+  items [{
+  product -> Producto
+  quantity
+  price
+  }]
+  createdAt
+
+- Payment
+  TODO
+  sale -> Sale
+  method ->
