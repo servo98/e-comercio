@@ -15,11 +15,10 @@
 
 Rutas del front
 
-/ Página principal vista productos
-
 /auth/register Registro de usuario
 /auth/login Inicio sesión
 
+/ Página principal vista productos
 /profile Perfil de usuario
 /profile/edit Editar datos de perfil
 /profiles/sales Historial de ventas
@@ -40,12 +39,12 @@ Rutas del back
 /auth/register POST registrar usuario ✅
 /auth/login POST Iniciar sesión ✅
 
-/profile GET Detalle de mi usuario
-/profile PUT Editar usuario
+/profile GET Detalle de mi usuario ✅
+/profile PUT Editar usuario ✅
 /profile/{id}/products Productos de una persona
 
 /products GET Lista de productos
-/products POST Registrar producto
+/products POST Registrar producto ✅
 /products/{id} Detalle producto
 /products/{id} PUT Editar producto
 /products/{id} DELETE Borrar productos

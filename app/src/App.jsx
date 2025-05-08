@@ -1,35 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter, Routes, Route } from "react-router";
+
+import AuthLayout from "./layouts/AuthLayout";
+import NormalLayout from "./layouts/NormalLayout";
+
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+
+import Profile from "./pages/Profile";
+import Sales from "./pages/Sales";
+import EditProfile from "./pages/EditProfile";
+import ProfileProducts from "./pages/ProfileProducts";
+
+import Home from "./pages/Home";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route element={<AuthLayout />}>
+          <Route path="register" element={<Register />} />
+          <Route path="login" element={<Login />} />
+        </Route>
+        <Route element={<NormalLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="profile">
+            <Route index element={<Profile />} />
+            <Route path="sales" element={<Sales />} />
+            <Route path="edit" element={<EditProfile />} />
+            <Route path=":userId" element={<ProfileProducts />} />
+          </Route>
+
+          {/* 
+            /profile/{id} Ver productos de cierta persona
+
+            /products Ver mis productos
+            /products/add Registrar producto
+            /products/{id} Detalle del producto
+            /products/{id}/edit Editar producto
+
+            /cart Ver mi carrito de compras
+
+            /payments/create Pasarela de pagos
+            /payments Historial de compras
+        */}
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
