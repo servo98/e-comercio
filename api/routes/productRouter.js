@@ -1,6 +1,7 @@
 import { Router } from "express";
 
 import isAuthenticated from "../middlewares/isAuthenticated.js";
+import upload from "../middlewares/uploadFile.js";
 
 import {
   productList,
@@ -13,7 +14,12 @@ import {
 const productRouter = Router();
 
 productRouter.get("/", productList);
-productRouter.post("/", isAuthenticated, createProduct);
+productRouter.post(
+  "/",
+  isAuthenticated,
+  upload.array("photos", 10),
+  createProduct
+);
 productRouter.get("/:productId", productDetail);
 productRouter.put("/:productId", updateProduct);
 productRouter.delete("/:productId", deleteProduct);

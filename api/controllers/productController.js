@@ -4,8 +4,13 @@ const productList = async (req, res) => {};
 
 const createProduct = async (req, res) => {
   try {
+    const { files } = req;
+
+    const photos = files ? files.map((file) => file.path) : [];
+
     const product = await Product.create({
       ...req.body,
+      photos,
       user: req.userId,
     });
 
