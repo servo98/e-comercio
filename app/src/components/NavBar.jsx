@@ -24,7 +24,12 @@ const NavBar = () => {
           </Nav.Link>
         </Nav>
         {/* TODO: gap between buttons */}
-        <Button variant="primary" as={NavLink} to="/login">
+        <Button
+          variant="primary"
+          as={NavLink}
+          to="/login"
+          style={{ marginRight: "12px" }}
+        >
           Login
         </Button>
         <Button variant="info" as={NavLink} to="/register">

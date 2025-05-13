@@ -10,6 +10,10 @@ import Profile from "./pages/Profile";
 import Sales from "./pages/Sales";
 import ProfileProducts from "./pages/ProfileProducts";
 
+import MyProducts from "./pages/MyProducts";
+import CreateProduct from "./pages/CreateProduct";
+import ProductDetail from "./pages/ProductDetail";
+
 import Home from "./pages/Home";
 
 function App() {
@@ -28,10 +32,13 @@ function App() {
             <Route path=":userId" element={<ProfileProducts />} />
           </Route>
 
-          {/* 
-            /profile/{id} Ver productos de cierta persona
+          <Route path="products">
+            <Route index element={<MyProducts />} />
+            <Route path="add" element={<CreateProduct />} />
+            <Route path=":productId" element={<ProductDetail />} />
+          </Route>
 
-            /products Ver mis productos
+          {/* 
             /products/add Registrar producto
             /products/{id} Detalle del producto
             /products/{id}/edit Editar producto
