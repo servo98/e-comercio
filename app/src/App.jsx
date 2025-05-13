@@ -8,7 +8,6 @@ import Register from "./pages/Register";
 
 import Profile from "./pages/Profile";
 import Sales from "./pages/Sales";
-import EditProfile from "./pages/EditProfile";
 import ProfileProducts from "./pages/ProfileProducts";
 
 import Home from "./pages/Home";
@@ -23,10 +22,9 @@ function App() {
         </Route>
         <Route element={<NormalLayout />}>
           <Route path="/" element={<Home />} />
-          <Route path="profile">
+          <Route path="profile/edit?">
             <Route index element={<Profile />} />
             <Route path="sales" element={<Sales />} />
-            <Route path="edit" element={<EditProfile />} />
             <Route path=":userId" element={<ProfileProducts />} />
           </Route>
 
