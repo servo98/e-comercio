@@ -22,6 +22,11 @@ const register = async ({
   });
 };
 
-const login = async () => {};
+const login = async ({ credential, password }) => {
+  return await api.post("/auth/login", {
+    credential,
+    password,
+  });
+};
 
 export { register, login };

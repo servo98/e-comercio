@@ -5,20 +5,12 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 import { register } from "../services/authServices";
 
 const Register = () => {
-  /**
-    firstName
-    lastName
-    birthday
-    phone
-    username
-    email
-    password
-    address
-   */
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -31,25 +23,41 @@ const Register = () => {
     password: "",
   });
 
+  const [validated, setvalidated] = useState(false);
+
   const handleChange = (e) => {
     const { value, name } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
-
-    // setFormData();
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    register();
+    const form = e.currentTarget;
+    if (!form.checkValidity()) {
+      setvalidated(true);
+    } else {
+      try {
+        const { data } = await register(formData);
+        console.log(data);
+        navigate("/login");
+      } catch (error) {
+        console.error(error);
+      }
+    }
   };
 
   return (
     <Container>
       <h1>Registrarse</h1>
-      <Form className="mt-5">
+      <Form
+        noValidate
+        className="mt-5"
+        onSubmit={handleSubmit}
+        validated={validated}
+      >
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formGridEmail">
             <Form.Label>Nombre</Form.Label>
@@ -118,6 +126,7 @@ const Register = () => {
             <Form.Label>Correo</Form.Label>
             <Form.Control
               name="email"
+              required
               type="text"
               placeholder="Apellido(s)"
               value={formData.email}
@@ -128,6 +137,7 @@ const Register = () => {
             <Form.Label>Nombre de usuario</Form.Label>
             <Form.Control
               name="username"
+              required
               type="text"
               placeholder="usuario123"
               value={formData.username}
@@ -138,6 +148,7 @@ const Register = () => {
             <Form.Label>Contraseña</Form.Label>
             <Form.Control
               name="password"
+              required
               type="password"
               placeholder="Ingresa contraseña"
               value={formData.password}
@@ -146,7 +157,7 @@ const Register = () => {
           </Form.Group>
         </Row>
 
-        <Button variant="primary" type="submit" onClick={handleSubmit}>
+        <Button variant="primary" type="submit">
           Registrarse
         </Button>
       </Form>
