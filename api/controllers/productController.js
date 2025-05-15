@@ -1,6 +1,19 @@
 import Product from "../models/Product.js";
 
-const productList = async (req, res) => {};
+const productList = async (req, res) => {
+  try {
+    const products = await Product.find();
+
+    return res.json({
+      products,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: "Error al obtener el catálogo de productos",
+    });
+  }
+};
 
 const createProduct = async (req, res) => {
   try {

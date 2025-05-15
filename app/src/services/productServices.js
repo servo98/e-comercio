@@ -19,4 +19,8 @@ const createProduct = async ({ price, name, description, stock, photos }) => {
   });
 };
 
-export { createProduct };
+const getProducts = async () => {
+  return await api.get("/products");
+};
+
+export { createProduct, getProducts };
