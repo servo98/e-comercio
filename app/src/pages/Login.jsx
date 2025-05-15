@@ -35,8 +35,7 @@ const Login = () => {
     } else {
       try {
         const { data } = await login(formData);
-        console.log(data);
-        loginProvider();
+        loginProvider(data.token);
         navigate("/");
       } catch (error) {
         console.error(error);

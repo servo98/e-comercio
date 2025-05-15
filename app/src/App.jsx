@@ -15,26 +15,39 @@ import CreateProduct from "./pages/CreateProduct";
 import ProductDetail from "./pages/ProductDetail";
 
 import Home from "./pages/Home";
+import PrivateRoute from "./router/PrivateRoute";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* {PÚBLICAS} */}
         <Route element={<AuthLayout />}>
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
         </Route>
+
         <Route element={<NormalLayout />}>
+          {/* {PÚBLICA} */}
           <Route path="/" element={<Home />} />
           <Route path="profile/edit?">
-            <Route index element={<Profile />} />
-            <Route path="sales" element={<Sales />} />
+            {/* {PRIVADAS} */}
+            <Route element={<PrivateRoute />}>
+              <Route index element={<Profile />} />
+              <Route path="sales" element={<Sales />} />
+            </Route>
+
+            {/* {PÚBLICA} */}
             <Route path=":userId" element={<ProfileProducts />} />
           </Route>
 
           <Route path="products">
-            <Route index element={<MyProducts />} />
-            <Route path="add" element={<CreateProduct />} />
+            {/* {PRIVADAS} */}
+            <Route element={<PrivateRoute />}>
+              <Route index element={<MyProducts />} />
+              <Route path="add" element={<CreateProduct />} />
+            </Route>
+            {/* {PÚBLICA} */}
             <Route path=":productId" element={<ProductDetail />} />
           </Route>
 
