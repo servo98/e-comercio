@@ -3,11 +3,12 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import Image from "react-bootstrap/Image";
 
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
-import { register } from "../services/authServices";
+import { createProduct } from "../services/productServices";
 
 const CreateProduct = () => {
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ const CreateProduct = () => {
   });
 
   const [photos, setphotos] = useState([]);
+  const [previews, setPreviews] = useState([]);
 
   const [validated, setvalidated] = useState(false);
 
@@ -34,9 +36,13 @@ const CreateProduct = () => {
   //TODO: finish this file
   const handleChangePhotos = (e) => {
     const files = Array.from(e.target.files);
-    console.log(files);
-
     setphotos(files);
+
+    const imgsURL = files.map((file) => {
+      return URL.createObjectURL(file);
+    });
+
+    setPreviews(imgsURL);
   };
 
   const handleSubmit = async (e) => {
@@ -46,9 +52,12 @@ const CreateProduct = () => {
       setvalidated(true);
     } else {
       try {
-        const { data } = await register(formData);
+        const { data } = await createProduct({
+          ...formData,
+          photos,
+        });
         console.log(data);
-        navigate("/login");
+        navigate("/products");
       } catch (error) {
         console.error(error);
       }
@@ -126,6 +135,15 @@ const CreateProduct = () => {
           </Form.Group>
         </Row>
 
+        <Row xs={1} md={2} lg={6}>
+          {previews.map((preview, index) => {
+            return (
+              <Col key={index}>
+                <Image thumbnail src={preview} />
+              </Col>
+            );
+          })}
+        </Row>
         <Button variant="primary" type="submit">
           Crear producto
         </Button>
