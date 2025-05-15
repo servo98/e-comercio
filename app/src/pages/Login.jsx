@@ -1,16 +1,16 @@
 import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
 import { login } from "../services/authServices";
+import useAuth from "../hooks/useAuth";
 
 const Login = () => {
   const navigate = useNavigate();
+  const { loginProvider } = useAuth();
 
   const [formData, setFormData] = useState({
     credential: "",
@@ -36,6 +36,7 @@ const Login = () => {
       try {
         const { data } = await login(formData);
         console.log(data);
+        loginProvider();
         navigate("/");
       } catch (error) {
         console.error(error);

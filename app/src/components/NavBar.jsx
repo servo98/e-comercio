@@ -4,8 +4,13 @@ import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
 
 import { NavLink } from "react-router";
+import NavBarProfile from "./NavBarProfile";
+
+import useAuth from "../hooks/useAuth";
 
 const NavBar = () => {
+  const { isAuth } = useAuth();
+
   return (
     <Navbar bg="dark" data-bs-theme="dark">
       <Container>
@@ -24,17 +29,24 @@ const NavBar = () => {
           </Nav.Link>
         </Nav>
         {/* TODO: gap between buttons */}
-        <Button
-          variant="primary"
-          as={NavLink}
-          to="/login"
-          style={{ marginRight: "12px" }}
-        >
-          Login
-        </Button>
-        <Button variant="info" as={NavLink} to="/register">
-          Register
-        </Button>
+
+        {isAuth ? (
+          <NavBarProfile />
+        ) : (
+          <>
+            <Button
+              variant="primary"
+              as={NavLink}
+              to="/login"
+              style={{ marginRight: "12px" }}
+            >
+              Login
+            </Button>
+            <Button variant="info" as={NavLink} to="/register">
+              Register
+            </Button>
+          </>
+        )}
       </Container>
     </Navbar>
   );
