@@ -5,6 +5,7 @@ import { NavLink } from "react-router";
 
 const MyProducts = () => {
   const [products, setproducts] = useState([]);
+  // TODO enlistar mis productos
   return (
     <Container>
       <h1>Mis productos</h1>

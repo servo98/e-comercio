@@ -48,6 +48,7 @@ const ProductDetail = () => {
           <Col className="col-12 col-md-6 mb-4">
             <h4>Precio: ${(+product.price).toFixed(2)}</h4>
           </Col>
+          {/* TODO: Flujo de carrito de compra y datos del vendedor*/}
           <Col className="col-12 col-md-6">
             <Button variant="success">Agregar al carrito</Button>
           </Col>

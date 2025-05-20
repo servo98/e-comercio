@@ -17,6 +17,8 @@ import ProductDetail from "./pages/ProductDetail";
 import Home from "./pages/Home";
 import PrivateRoute from "./router/PrivateRoute";
 
+import Cart from "./pages/Cart";
+
 function App() {
   return (
     <BrowserRouter>
@@ -51,12 +53,15 @@ function App() {
             <Route path=":productId" element={<ProductDetail />} />
           </Route>
 
+          <Route path="cart">
+            <Route element={<PrivateRoute />}>
+              <Route index element={<Cart />} />
+            </Route>
+          </Route>
+
           {/* 
-            /products/add Registrar producto
-            /products/{id} Detalle del producto
             /products/{id}/edit Editar producto
 
-            /cart Ver mi carrito de compras
 
             /payments/create Pasarela de pagos
             /payments Historial de compras

@@ -15,17 +15,20 @@ const NavBar = () => {
     <Navbar bg="dark" data-bs-theme="dark">
       <Container>
         <Navbar.Brand as={NavLink} to="/">
-          Home
+          Catálogo
         </Navbar.Brand>
         <Nav className="me-auto">
           <Nav.Link as={NavLink} to="/profile">
-            Profile
+            Perfil
           </Nav.Link>
           <Nav.Link as={NavLink} to="/products">
-            My products
+            Mis productos
           </Nav.Link>
           <Nav.Link as={NavLink} to="/profile/sales">
-            Sales
+            Historial de ventas
+          </Nav.Link>
+          <Nav.Link as={NavLink} to="/cart">
+            Carrito
           </Nav.Link>
         </Nav>
         {/* TODO: gap between buttons */}

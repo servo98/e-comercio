@@ -23,6 +23,7 @@ const Home = () => {
     getData();
   }, []);
 
+  // TOOD: Paginado filtro y búsqueda
   return (
     <>
       <h2>Catálogo de productos</h2>
