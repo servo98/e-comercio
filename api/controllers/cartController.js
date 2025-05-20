@@ -13,8 +13,10 @@ const getCart = async (req, res) => {
       });
     }
 
+    const tempCart = await cart.populate("items.product");
+
     return res.json({
-      cart,
+      cart: tempCart,
     });
   } catch (error) {
     console.error(error);
@@ -93,6 +95,7 @@ const addToCart = async (req, res) => {
 };
 const updateCart = async (req, res) => {
   try {
+    // TOOD: completar controlador para actualizar carrito
   } catch (error) {
     console.error(error);
     res.status(500).json({
