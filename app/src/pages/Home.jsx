@@ -1,4 +1,3 @@
-import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
@@ -25,7 +24,7 @@ const Home = () => {
   }, []);
 
   return (
-    <Container className="my-4">
+    <>
       <h2>Catálogo de productos</h2>
       <Row className="g-4">
         {products.map((product, index) => (
@@ -50,7 +49,7 @@ const Home = () => {
           </Col>
         ))}
       </Row>
-    </Container>
+    </>
   );
 };
 

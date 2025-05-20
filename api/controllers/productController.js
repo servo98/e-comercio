@@ -38,7 +38,34 @@ const createProduct = async (req, res) => {
   }
 };
 
-const productDetail = async (req, res) => {};
+/**
+ *
+ * @param {import("express").Request} req
+ * @param {import("express").Response} res
+ */
+const productDetail = async (req, res) => {
+  try {
+    const { productId } = req.params;
+
+    // TODO: validar id
+    const product = await Product.findById(productId);
+
+    if (!product) {
+      return res.status(404).json({
+        message: "Product not found",
+      });
+    }
+
+    return res.json({
+      product,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      message: "Error al obtener detalle producto",
+    });
+  }
+};
 const updateProduct = async (req, res) => {};
 const deleteProduct = async (req, res) => {};
 
