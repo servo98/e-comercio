@@ -93,9 +93,61 @@ const addToCart = async (req, res) => {
     });
   }
 };
+
 const updateCart = async (req, res) => {
   try {
-    // TOOD: completar controlador para actualizar carrito
+    const cart = await Cart.findOne({
+      user: req.userId,
+    });
+
+    if (!cart) {
+      return res.status(404).json({
+        message: "Carrito no encontrado para actualizar",
+      });
+    }
+
+    /**
+     * req.body {
+     *
+     *  items: [{
+     *    productId,
+     *    quantity
+     *  }]
+     * }
+     *  ->
+     * [{
+     *  product
+     *  price
+     *  quantity
+     * }]
+     *
+     *
+     */
+
+    const products = await Promise.all(
+      req.body.items.map((item) => {
+        return Product.findById(item.productId).select("price");
+      })
+    );
+
+    const newItems = products.map((product, index) => {
+      return {
+        product: product._id,
+        price: product.price,
+        quantity: req.body.items[index].quantity,
+      };
+    });
+
+    cart.items = newItems;
+    cart.total = cart.items.reduce((acc, current) => {
+      return current.price * current.quantity + acc;
+    }, 0);
+
+    await cart.save();
+
+    return res.json({
+      cart,
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({

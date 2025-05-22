@@ -11,8 +11,18 @@ const addToCart = async (productId, quantity) => {
 };
 
 // TODO create update cart service
-const updateCart = async (params) => {
-  return api;
+
+/**
+ *
+ * items: [{
+ *    productId,
+ *    quantity
+ *  }]} items
+ */
+const updateCart = async (items) => {
+  return api.put("/cart", {
+    items,
+  });
 };
 
 export { getCart, addToCart, updateCart };
