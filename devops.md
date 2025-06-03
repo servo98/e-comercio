@@ -1,0 +1,7 @@
+- JS
+- Git
+- Github
+- Shell
+- Code Quality
+- Github Actions (CI/CD)
+- Docker
