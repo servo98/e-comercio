@@ -1,3 +1,0 @@
-- Carne asada
-- Espagueti
-- Machacado
