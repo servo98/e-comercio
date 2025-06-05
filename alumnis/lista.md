@@ -3,6 +3,7 @@ Personas:
 - Fernando
 - Oscar
 - Dany
+- Leonardo
 
 Comidas:
 
@@ -12,3 +13,5 @@ Comidas:
 - Tacos al Pastro
 - Tortas
 - Aguachile
+- Big Macs
+- Elotes
