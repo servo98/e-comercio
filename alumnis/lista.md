@@ -1,11 +1,14 @@
 Personas:
 
 - Fernando
+- Oscar
 - Dany
 
 Comidas:
 
-- pizza
+- pizza x2 
 - sushi
 - burritos
+- Tacos al Pastro
+- Tortas
 - Aguachile
