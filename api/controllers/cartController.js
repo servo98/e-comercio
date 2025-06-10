@@ -9,7 +9,7 @@ const getCart = async (req, res) => {
 
     if (!cart) {
       cart = await Cart.create({
-        user: userId,
+        user: req.userId,
       });
     }
 

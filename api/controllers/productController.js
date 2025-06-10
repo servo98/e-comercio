@@ -66,8 +66,8 @@ const productDetail = async (req, res) => {
     });
   }
 };
-const updateProduct = async (req, res) => {};
-const deleteProduct = async (req, res) => {};
+const updateProduct = async () => {};
+const deleteProduct = async () => {};
 
 export {
   productList,

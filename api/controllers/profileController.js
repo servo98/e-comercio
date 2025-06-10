@@ -34,6 +34,6 @@ const updateProfile = async (req, res) => {
   }
 };
 
-const profileProducts = async (req, res) => {};
+const profileProducts = async () => {};
 
 export { getProfile, updateProfile, profileProducts };

@@ -14,8 +14,8 @@ const storage = new CloudinaryStorage({
   cloudinary,
   params: {
     folder: "productosImgs",
-    formate: (req, file) => "jpeg",
-    public_id: (req, file) => uuid(),
+    formate: () => "jpeg",
+    public_id: () => uuid(),
   },
 });
 

@@ -6,4 +6,10 @@
 - Github Actions (CI/CD)
 - Docker
 
-cambio
+eslint
+-prettier
+jest
+cypress
+husky
+
+Sonar\*
