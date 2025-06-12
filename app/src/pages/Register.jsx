@@ -63,6 +63,7 @@ const Register = () => {
             <Form.Label>Nombre</Form.Label>
             <Form.Control
               name="firstName"
+              data-cy="firstName"
               required
               type="text"
               placeholder="Nombre"
@@ -74,6 +75,7 @@ const Register = () => {
           <Form.Group as={Col} controlId="formGridPassword">
             <Form.Label>Apellido(s)</Form.Label>
             <Form.Control
+              data-cy="lastName"
               name="lastName"
               required
               type="text"
@@ -88,6 +90,7 @@ const Register = () => {
           <Form.Group as={Col}>
             <Form.Label>Fecha de nacimiento</Form.Label>
             <Form.Control
+              data-cy="birthday"
               name="birthday"
               required
               type="date"
@@ -99,6 +102,7 @@ const Register = () => {
             <Form.Label>Teléfono</Form.Label>
             <Form.Control
               name="phone"
+              data-cy="phone"
               required
               type="text"
               placeholder="Nombre"
@@ -113,6 +117,7 @@ const Register = () => {
             <Form.Label>Dirección</Form.Label>
             <Form.Control
               name="address"
+              data-cy="address"
               required
               placeholder="1234 Main St"
               value={formData.address}
@@ -126,6 +131,7 @@ const Register = () => {
             <Form.Label>Correo</Form.Label>
             <Form.Control
               name="email"
+              data-cy="email"
               required
               type="text"
               placeholder="Apellido(s)"
@@ -137,6 +143,7 @@ const Register = () => {
             <Form.Label>Nombre de usuario</Form.Label>
             <Form.Control
               name="username"
+              data-cy="username"
               required
               type="text"
               placeholder="usuario123"
@@ -148,6 +155,7 @@ const Register = () => {
             <Form.Label>Contraseña</Form.Label>
             <Form.Control
               name="password"
+              data-cy="password"
               required
               type="password"
               placeholder="Ingresa contraseña"
@@ -157,7 +165,7 @@ const Register = () => {
           </Form.Group>
         </Row>
 
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" data-cy="register-btn">
           Registrarse
         </Button>
       </Form>

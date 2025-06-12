@@ -1,0 +1,14 @@
+{
+  "message": "Usuario creado",
+  "user": {
+    "firstName": "asdad",
+    "lastName": "asd",
+    "birthday": "2025-06-05T00:00:00.000Z",
+    "address": "teste calle test",
+    "phone": "123",
+    "username": "user123",
+    "email": "corre@test123123.com",
+    "_id": "6847a579f77dbd3848abc675",
+    "__v": 0
+  }
+}
