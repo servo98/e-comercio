@@ -1,0 +1,33 @@
+services:
+  frontend:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: frontend1
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+  backend:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: backend1
+    ports:
+      - "8080:8080"
+    networks:
+      - tienda-net
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:latest
+    container_name: tienda-db
+    networks:
+      - tienda-net
+    volumes:
+      - tienda-volume:/data/db
+
+networks:
+  tienda-net:
+volumes:
+  tienda-volume:

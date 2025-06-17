@@ -6,10 +6,13 @@ WORKDIR /api
 
 # Copiar nuestro código dentro de la imagen
 # No se copia node_modules para que se instalen las dependencias según el OS de la image
-COPY . .
+COPY package.json .
+COPY yarn.lock .
 
 # Instalamos dependencias dentro de la imagen
-RUN npm install
+RUN yarn
+
+COPY . .
 
 # Exponer el puerto 8080
 EXPOSE 8080
