@@ -15,6 +15,9 @@ services:
     container_name: backend1
     ports:
       - "8080:8080"
+    volumes:
+      - ./api:/api
+      - /api/node_modules
     networks:
       - tienda-net
     depends_on:
@@ -26,6 +29,8 @@ services:
       - tienda-net
     volumes:
       - tienda-volume:/data/db
+    ports:
+      - "27017:27017"
 
 networks:
   tienda-net:

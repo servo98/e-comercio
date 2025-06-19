@@ -4,6 +4,20 @@ import jwt from "jsonwebtoken";
 
 const register = async (req, res) => {
   try {
+    const userFound = await User.findOne({
+      $or: [
+        { email: req.body.email },
+        { phone: req.body.phone },
+        { username: req.body.username },
+      ],
+    });
+
+    if (userFound) {
+      return res.status(400).json({
+        message: "El usuario ya existe",
+      });
+    }
+
     const password = bcrypt.hashSync(req.body.password, 10);
     req.body.password = password;
     const user = await User.create(req.body);
