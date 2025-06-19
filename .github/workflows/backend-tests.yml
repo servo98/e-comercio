@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-22.04
     defaults:
       run:
-        working-directory: ./api
+        working-directory: api
 
     steps:
       - name: Setup NodeJs
