@@ -1,0 +1,23 @@
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Setup NodeJs
+        uses: actions/setup-node@v3.9.1
+        with: 
+          node-version: 20.18.1
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Lint
+        run: yarn lint
+
+
+  
+  # test
