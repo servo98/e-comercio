@@ -10,10 +10,9 @@ jobs:
         working-directory: api
 
     steps:
-
       - name: Checkout
         uses: actions/checkout@v4.2.2
-        
+
       - name: Setup NodeJs
         uses: actions/setup-node@v3.9.1
         with:
@@ -25,4 +24,24 @@ jobs:
       - name: Lint
         run: yarn lint
 
-  # test
+  test:
+    runs-on: ubuntu-22.04
+    defaults:
+      run:
+        working-directory: api
+    needs: lint
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+
+      - name: Setup NodeJs
+        uses: actions/setup-node@v3.9.1
+        with:
+          node-version: 20.18.1
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Test
+        run: yarn test
