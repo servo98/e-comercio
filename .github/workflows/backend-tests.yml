@@ -30,6 +30,8 @@ jobs:
       run:
         working-directory: api
     needs: lint
+    environment:
+      name: actions-test
 
     steps:
       - name: Checkout
@@ -45,3 +47,5 @@ jobs:
 
       - name: Test
         run: yarn test
+        env:
+          MONGO_URI: ${{vars.MONGO_URI}}
