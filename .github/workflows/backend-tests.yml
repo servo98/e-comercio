@@ -10,10 +10,40 @@ jobs:
         working-directory: api
 
     steps:
-
       - name: Checkout
         uses: actions/checkout@v4.2.2
-        
+
+      - name: Setup NodeJs
+        uses: actions/setup-node@v3.9.1
+        with:
+          node-version: 20.18.1
+
+      - name: Cache Node modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('api/yarn.lock') }}
+          restore-keys: ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Lint
+        run: yarn lint
+
+  test:
+    runs-on: ubuntu-22.04
+    defaults:
+      run:
+        working-directory: api
+    needs: lint
+    environment:
+      name: actions-test
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+
       - name: Setup NodeJs
         uses: actions/setup-node@v3.9.1
         with:
@@ -22,7 +52,7 @@ jobs:
       - name: Install dependencies
         run: yarn
 
-      - name: Lint
-        run: yarn lint
-
-  # test
+      - name: Test
+        run: yarn test
+        env:
+          MONGO_URI: ${{vars.MONGO_URI_2}}
